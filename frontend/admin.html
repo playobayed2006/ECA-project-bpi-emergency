@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <script src="./js/admin.js" defer></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/style-to-add.css">
+    <style>
+      body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: linear-gradient(to top right, #083869 -5%, #4b0461 100%);
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <div id="popup-spinner" class="spinner"></div>
+        <p id="popup-message">Please Wait...</p>
+        <button id="popup-close" class="hidden">Close</button>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="content">
+        <h1>Admin Dashboard</h1>
+        <p>To get participants information download the CSV file from below.</p>
+
+        <div class="option">
+          <!-- Admin panel entry point. -->
+          <!-- From here an admin can download specific onusod's data as csv file. -->
+          <!-- TODO: implement security check, password or other form of authentication. -->
+          <label class="label-title">Select to download:</label>
+          <select id="adminOnusod" required>
+            <option value="indoor_games_boys">আন্ত: কক্ষ ক্রীড়া অনুষদ</option>
+            <option value="indoor_games_girls">ছাত্রী অনুষদ</option>
+            <option value="literature_culture_council">সাহিত্য ও সংস্কৃতি অনুষদ</option>
+          </select>
+
+          <!-- Download button for the csv file. -->
+          <!-- This has an attached event listener on ./js/admin.js -->
+          <button type="button" id="downloadBtn">Download CSV</button>
+          <br />
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

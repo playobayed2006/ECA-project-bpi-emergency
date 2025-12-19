@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main{
+    height: 100vh;
+    background: linear-gradient(to top right, #083869 -5%, #4b0461 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    position: fixed;
+    top: 20px;
+    left: 100px;
+}
+.logo img{
+    width: 25%;
+}
+
+.section{
+    display: flex;
+    gap: 15px;
+    width: 700px;
+    background-color: #041f1e;
+    padding: 50px;
+    border-radius: 7px;
+    box-shadow: 0 0 50px rgb(23, 38, 42);
+}
+
+.login-left{
+    flex: 1;
+}
+.login-left h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    color: rgb(11, 130, 163);
+    margin-bottom: 10px;
+}
+.login-left p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: aliceblue;
+}
+.rights{
+    margin-top: 100px;
+    color: dimgray !important; 
+    font-weight: 600;
+}
+
+.login-right{
+    flex: 1;
+    padding-top: 30px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    border: none;
+    outline: 1px solid gray;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    background-color: transparent;
+    color: aliceblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    padding: 10px;
+    transition: 0.1s ease-in-out;
+}
+input:focus{
+    outline: 2px solid rgb(11, 80, 255);
+}
+
+.bttn{
+    text-align: center;
+    margin-top: 20px;
+}
+button{
+    outline: none;
+    border: none;
+    width: 100%;
+    border-radius: 7px;
+    padding: 5px 25px;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    background-color: #006494;
+    color: #9ddbf8;
+    transition: 0.4s ease-in-out;
+}
+button:hover{
+    background-color: #1e4e65;
+}
+
+
+/* mobile screen */
+@media only screen and (max-width: 600px){
+    .main{
+        padding: 0 20px;
+    }
+
+    .logo{
+        top: 20px;
+        left: 20px;
+    }
+
+    .section{
+        flex-direction: column;
+        width: 500px;
+        padding: 50px 20px;
+    }
+    .section h2{
+        font-size: 30px;
+    }
+    .rights{
+        display: none;
+    }
+}

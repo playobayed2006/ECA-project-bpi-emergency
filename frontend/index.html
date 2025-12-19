@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<!-- lol -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECA BPI - Extra Curricular Activities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/form.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-to-add.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3730a3 50%,
+          #5b21b6 100%
+        );
+      }
+
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0% {
+          transform: translate(0, 0px);
+        }
+        50% {
+          transform: translate(0, -15px);
+        }
+        100% {
+          transform: translate(0, 0px);
+        }
+      }
+
+      .pulse-glow {
+        animation: pulse-glow 2s infinite;
+      }
+
+      @keyframes pulse-glow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(99, 102, 241, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <div id="popup-spinner" class="spinner"></div>
+        <p id="popup-message">Please Wait...</p>
+        <button id="popup-close" class="hidden">Close</button>
+      </div>
+    </div>
+
+    <root class="min-h-screen flex flex-col mx-5">
+      <div class="bg-sky-100 w-full">
+        <!-- text slider -->
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="10"
+          class="bg-sky-300 w-full my-0 py-1"
+        >
+          <p>
+            <span style="color: red">*</span>Apply now to participate in annual
+            sports!
+          </p>
+        </marquee>
+
+        <!-- Header Section -->
+        <header class="bg-white shadow-md sticky top-0 z-50">
+          <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="flex justify-between items-center py-2">
+              <!-- Logo and Brand Section -->
+              <div class="flex items-center space-x-3">
+                <!-- Logo Placeholder -->
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                >
+                  ECA
+                </div>
+                <div class="hidden sm:block">
+                  <h1
+                    class="text-base sm:text-lg lg:text-xl font-bold text-blue-800"
+                  >
+                    ECA
+                  </h1>
+                </div>
+              </div>
+
+              <!-- Desktop Navigation -->
+              <nav class="hidden md:flex space-x-1 lg:space-x-3">
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-lime-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-0.5 border border-transparent hover:border-lime-500/30 relative overflow-hidden group text-lg"
+                >
+                  <span class="relative z-10">Home</span>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-r from-lime-500/0 via-lime-500/10 to-lime-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+                  ></div>
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-blue-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-300 ease-out transform hover:scale-105 border border-transparent hover:border-blue-500/30 text-lg"
+                >
+                  About
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-purple-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-500 ease-in-out transform hover:scale-110 hover:rotate-1 border border-transparent hover:border-purple-500/30 text-lg"
+                >
+                  Contact
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-rose-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-200 ease-in transform hover:skew-x-2 border border-transparent hover:border-rose-500/30 text-lg"
+                >
+                  Events
+                </a>
+                <a
+                  href="#formcall"
+                  class="text-blue-800 font-[500] hover:bg-purple-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-500 ease-in-out transform hover:scale-110 hover:rotate-1 border border-transparent hover:border-purple-500/30 text-lg"
+                >
+                  Apply now
+                </a>
+              </nav>
+
+              <!-- Mobile Menu Button -->
+              <button
+                id="mobile-menu-button"
+                class="md:hidden text-blue-800 hover:bg-blue-100 p-1 rounded-lg transition-colors duration-200"
+              >
+                <i class="fas fa-bars text-lg"></i>
+              </button>
+            </div>
+
+            <!-- Mobile Navigation Menu - Right Aligned and Compact -->
+            <div
+              id="mobile-menu"
+              class="hidden md:hidden absolute right-4 top-16 bg-white rounded-lg shadow-xl border border-gray-200 w-48 py-2"
+            >
+              <div class="flex flex-col space-y-1">
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-lime-600/20 py-2 px-3 rounded mx-2 transition-all duration-300 ease-in-out transform hover:scale-105 border border-transparent hover:border-lime-500/30 text-sm"
+                >
+                  <i class="fas fa-home mr-2 w-4"></i>Home
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-blue-600/20 py-2 px-3 rounded mx-2 transition-all duration-300 ease-out transform hover:scale-105 border border-transparent hover:border-blue-500/30 text-sm"
+                >
+                  <i class="fas fa-info-circle mr-2 w-4"></i>About
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-purple-600/20 py-2 px-3 rounded mx-2 transition-all duration-500 ease-in-out transform hover:scale-110 border border-transparent hover:border-purple-500/30 text-sm"
+                >
+                  <i class="fas fa-envelope mr-2 w-4"></i>Contact
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-rose-600/20 py-2 px-3 rounded mx-2 transition-all duration-200 ease-in transform hover:skew-x-2 border border-transparent hover:border-rose-500/30 text-sm"
+                >
+                  <i class="fas fa-calendar-alt mr-2 w-4"></i>Events
+                </a>
+                <a
+                  href="#formcall"
+                  class="text-blue-800 hover:bg-purple-600/20 py-2 px-3 rounded mx-2 transition-all duration-500 ease-in-out transform hover:scale-110 border border-transparent hover:border-purple-500/30 text-sm"
+                >
+                  <i class="fa-solid fa-arrow-right-to-bracket mr-2 w-4"></i
+                  >Apply now
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section
+          class="gradient-bg flex flex-col items-center justify-center w-full py-20 md:py-28 px-4 relative overflow-hidden rounded-b-3xl"
+        >
+          <!-- Background Elements -->
+          <div
+            class="absolute top-10 left-10 w-20 h-20 bg-indigo-400/20 rounded-full floating"
+          ></div>
+          <div
+            class="absolute bottom-16 right-16 w-16 h-16 bg-purple-400/20 rounded-full floating"
+            style="animation-delay: 1s"
+          ></div>
+          <div
+            class="absolute top-1/3 right-1/4 w-12 h-12 bg-pink-400/20 rounded-full floating"
+            style="animation-delay: 2s"
+          ></div>
+
+          <div
+            class="relative z-10 flex flex-col items-center text-center max-w-4xl"
+          >
+            <h2
+              class="text-4xl md:text-5xl lg:text-6xl text-white font-bold enhanced-leading mb-6"
+            >
+              Welcome to <br />
+              <span
+                class="bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent"
+                >ECA Mangement System</span
+              ><br />
+              <span class="mobile-hidden"
+                >of <br />
+                Bogura polytechnic Institute</span
+              >
+            </h2>
+
+            <p
+              class="text-xl md:text-2xl text-indigo-100 text-center mb-8 max-w-3xl leading-relaxed"
+            >
+              Your Hub for Extracurricular Activities. Explore clubs, join
+              teams, and discover new passions beyond your studies.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 mt-2">
+              <button
+                class="bg-white hover:bg-gray-100 text-indigo-700 font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-lg pulse-glow"
+              >
+                Explore Clubs
+              </button>
+              <button
+                class="bg-transparent hover:bg-white text-white font-bold py-3 px-8 rounded-full border-2 border-white hover:text-indigo-700 transition duration-300 text-lg transform hover:-translate-y-1"
+              >
+                Join Event
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section
+          class="py-12 md:py-16 px-4 max-w-7xl mx-auto mb-20 mt-10 rounded-3xl bg-white"
+        >
+          <div class="text-center mb-12">
+            <h3 class="text-2xl md:text-3xl font-bold text-indigo-900 mb-4">
+              Our Partners & Sponsors
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              We collaborate with leading organizations to bring you the best
+              extracurricular experiences
+            </p>
+          </div>
+
+          <div
+            class="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16"
+          >
+            <div
+              class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="w-32 h-32 flex items-center justify-center">
+                <img
+                  class="w-auto transition-transform duration-300 hover:scale-10 object-contain"
+                  src="/static/img_asset/logo1.png"
+                  alt="Partner logo 1"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="w-32 h-32 flex items-center justify-center">
+                <img
+                  class="w-auto transition-transform duration-300 hover:scale-10 object-contain"
+                  src="/static/img_asset/logo2.png"
+                  alt="Partner logo 2"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="w-32 h-32 flex items-center justify-center">
+                <img
+                  class="w-auto transition-transform duration-300 hover:scale-10 hover:shadow-lg object-contain"
+                  src="/static/img_asset/logo3.png"
+                  alt="Partner logo 3"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="w-32 h-32 flex items-center justify-center">
+                <img
+                  class="w-auto transition-transform duration-300 hover:scale-10 object-contain"
+                  src="/static/img_asset/logo4.png"
+                  alt="Partner logo 4"
+                />
+              </div>
+            </div>
+            <div
+              class="bg-gray-100 p-6 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            >
+              <div class="w-32 h-32 flex items-center justify-center">
+                <img
+                  class="w-auto transition-transform duration-300 hover:scale-10 object-contain"
+                  src="/static/img_asset/logo5.png"
+                  alt="Partner logo 5"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Events Section -->
+        <section
+          class="py-12 md:py-16 px-4 max-w-7xl mx-auto bg-gradient-to-b from-white to-indigo-50 rounded-t-3xl -mt-8 relative z-10"
+        >
+          <div class="text-center mb-12">
+            <h3
+              class="text-3xl md:text-4xl font-extrabold text-indigo-900 mb-4"
+            >
+              Our Events
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+              Discover exciting events that help you grow beyond the classroom
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+          >
+            <!-- Event Card 1 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-indigo-500 to-purple-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div>
+                  <img
+                    src="https://imgs.search.brave.com/ZmTNFe3ftqu3sx5qEs2LcZCErF0LoOyKtnjREhOXuho/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNjkv/NDcyLzYzNC9zbWFs/bC9jcmlja2V0LWJh/bGwtb24tZ3Jhc3Mt/YXQtc3RhZGl1bS1w/cm9mZXNzaW9uYWwt/c3BvcnRzLWVxdWlw/bWVudC1mb3ItY3Jp/Y2tldC1tYXRjaC1h/bmQtdG91cm5hbWVu/dC1wbGF5LXBob3Rv/LmpwZw"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 mr-4"
+                  >
+                    <i class="fas fa-baseball-ball"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">
+                    Inter-Technology Cricket Tournament
+                  </h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Annual cricket competition between departments to build
+                  teamwork, sportsmanship, and community spirit.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span
+                    ><i class="far fa-calendar mr-1"></i> Nov 15-20, 2023</span
+                  >
+                  <span
+                    ><i class="far fa-user mr-1"></i> 120+ Participants</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card 2 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-amber-500 to-orange-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div class="">
+                  <img
+                    src="https://imgs.search.brave.com/AT-D9QBSoD2KI_KTO2pWmR0epqtBzDGLRoG5oMUfdwE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zYWlu/dGxvdWlzY2hlc3Nj/bHViLm9yZy93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyNS8wOC9w/aG90by1EYXktMy1v/Zi10aGUtMjAyNS1D/bHV0Y2gtQ2hlc3Mt/Q2hhbXBpb25zLVNo/b3dkb3duLWZlYXR1/cmluZy1HTS1NYWdu/dXMtQ2FybHNlbi1w/bGF5aW5nLWNoZXNz/LWFnYWluc3QtR00t/RmFiaWFuby1DYXJ1/YW5hLUxPVTA4ODQ5/LndlYnA"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 mr-4"
+                  >
+                    <i class="fas fa-chess"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">
+                    Indoor Games Competition
+                  </h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Chess, carrom, and table tennis competitions to challenge your
+                  mind and reflexes.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span
+                    ><i class="far fa-calendar mr-1"></i> Dec 5-7, 2023</span
+                  >
+                  <span><i class="far fa-user mr-1"></i> 80+ Participants</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-emerald-500 to-teal-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div>
+                  <img
+                    src="https://imgs.search.brave.com/o3uR-tTZRZHMgqGnwuKYmcmygHhBRXWeo-ysHfqKwJ4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi91c2Fp/bi1ib2x0LXJ1bm5p/bmctbS1yaW8tb2x5/bXBpY3MteHhpLXN1/bW1lci1icmF6aWwt/NzYzNzk0MzQuanBn"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 mr-4"
+                  >
+                    <i class="fas fa-running"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">
+                    Outdoor Games Competition
+                  </h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Football, volleyball, and athletics events to promote fitness
+                  and healthy competition.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span
+                    ><i class="far fa-calendar mr-1"></i> Jan 10-15, 2024</span
+                  >
+                  <span
+                    ><i class="far fa-user mr-1"></i> 200+ Participants</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card 4 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-rose-500 to-pink-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div>
+                  <img
+                    src="https://imgs.search.brave.com/5455hpizn8v7ult1bi6-xH__aG2F6ERjS-4vtsK2r-g/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YnJpZGVzLmNvbS90/aG1iLzdVYzdTU0oy/by1nMEpJUzlSRTJu/TGpOd21HQT0vNjAw/eDYwMC9maWx0ZXJz/Om5vX3Vwc2NhbGUo/KTptYXhfYnl0ZXMo/MTUwMDAwKTpzdHJp/cF9pY2MoKS93ZWRk/aW5nLXNlYXRpbmct/dGVtcGxhdGUtcmVj/aXJjLWdldHR5LTEy/LTEzLThjZjQ1MzIx/MzVlYzQ4ZjFhNTcw/YzNiMjRlOTI5MDMz/LmpwZw"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 mr-4"
+                  >
+                    <i class="fas fa-user-graduate"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">
+                    Freshers' Reception
+                  </h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Official welcoming ceremony for newly admitted students with
+                  cultural performances and introductions.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span><i class="far fa-calendar mr-1"></i> Sep 25, 2023</span>
+                  <span><i class="far fa-user mr-1"></i> All Freshers</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card 5 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-violet-500 to-purple-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div>
+                  <img
+                    src="https://imgs.search.brave.com/PeNSfkuREEUJRxdrAVf0-HeIycAuGZFhW3PMSmgUqLg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuc2F5bWVkaWEt/Y29udGVudC5jb20v/LmltYWdlL2NfbGlt/aXQsY3Nfc3JnYixm/bF9wcm9ncmVzc2l2/ZSxxX2F1dG86ZWNv/LHdfNzAwL01qQXhO/amd5TXpBek16TTRP/VFE0TWpNNS9mYXJl/d2VsbC1zcGVlY2gt/Zm9yLXNlbmlvcnMt/YnktanVuaW9yLXN0/dWRlbnRzLWluLWNv/bGxlZ2UuanBn"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 mr-4"
+                  >
+                    <i class="fas fa-graduation-cap"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">
+                    Graduation Farewell
+                  </h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Celebrating the achievements of graduating students with
+                  awards, speeches, and memories.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span><i class="far fa-calendar mr-1"></i> Jun 15, 2024</span>
+                  <span><i class="far fa-user mr-1"></i> Graduating Class</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Event Card 6 -->
+            <div
+              class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-[1.03] transition duration-300 group"
+            >
+              <div
+                class="h-48 bg-gradient-to-r from-cyan-500 to-blue-600 relative overflow-hidden"
+              >
+                <div class="absolute inset-0 bg-black/20"></div>
+                <div>
+                  <img
+                    src="https://imgs.search.brave.com/gigNxRhqg_RUAdD507kadQxx_59LDu4ynBYy3j1ovPA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bmFyYXlhbmFzY2hv/b2xzLmluL2Jsb2cv/d3AtY29udGVudC91/cGxvYWRzLzIwMjMv/MDgvMDEtMy5qcGc"
+                    alt="tournament image"
+                    class="w-full h-48"
+                  />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-4">
+                  <div
+                    class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 mr-4"
+                  >
+                    <i class="fas fa-calendar-plus"></i>
+                  </div>
+                  <h5 class="text-xl font-bold text-gray-800">Other Events</h5>
+                </div>
+                <p class="text-gray-600 mb-4">
+                  Workshops, seminars, cultural festivals, and more throughout
+                  the academic year.
+                </p>
+                <div
+                  class="flex justify-between items-center text-sm text-gray-500"
+                >
+                  <span><i class="far fa-calendar mr-1"></i> Year-round</span>
+                  <span><i class="far fa-user mr-1"></i> All Students</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <button
+              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+            >
+              View All Events
+            </button>
+          </div>
+        </section>
+
+        <!-- watch recent event & upcoming events -->
+        <section class="p-8 max-w-7xl mx-auto rounded-3xl bg-white my-10">
+          <div
+            class="flex justify-between items-baseline mb-6 border-b-2 border-indigo-400 pb-2"
+          >
+            <h3 class="text-3xl font-extrabold text-indigo-700">
+              Recent Event Highlights 🎬
+            </h3>
+          </div>
+
+          <div class="flex flex-wrap lg:flex-nowrap gap-8">
+            <div
+              class="w-full lg:w-1/2 shadow-xl rounded-lg overflow-hidden bg-gray-900 border border-gray-200"
+            >
+              <div class="relative w-full aspect-video">
+                <video
+                  src="/static/video_asset/cricketvideo.mp4"
+                  controls
+                  class="w-full h-full object-cover"
+                >
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div class="p-4 text-white text-center">
+                <p class="text-sm font-light">
+                  Inter-Technology Cricket Tournament Final (Dec 2025)
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="w-full lg:w-1/2 shadow-xl rounded-lg overflow-hidden border border-gray-200 bg-white"
+            >
+              <div
+                class="flex justify-between items-baseline mb-6 border-b-2 border-indigo-400 p-4 upcoming-hidden"
+              >
+                <h3 class="text-3xl font-extrabold text-gray-700">
+                  <span style="color: crimson">#</span>Upcoming Events
+                </h3>
+              </div>
+
+              <table class="w-full border-collapse text-sm">
+                <thead>
+                  <tr class="bg-indigo-600 text-white uppercase">
+                    <th class="py-3 px-4 text-left w-1/4">Date</th>
+                    <th class="py-3 px-4 text-left w-3/4">Event Name</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      11-11-2025
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Final Semester Exam Preparation Workshop
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      11-12-2025
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Annual Tech Carnival Planning Meeting
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      01-01-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      New Year's Day Celebration & Alumni Mixer
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      11-01-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Career Development Seminar: CV & Interview Skills
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      20-01-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Inter-Club Debate Competition Registration
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      01-02-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      ECA Volunteer Sign-Up Drive
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      15-02-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Final Project Submission Deadline
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-indigo-50/50 border-b">
+                    <td class="py-2 px-4 font-mono text-gray-700">
+                      20-02-2026
+                    </td>
+                    <td class="py-2 px-4 font-semibold text-gray-800">
+                      Annual Sports Meet Gala Opening
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="p-2 text-right">
+                <a
+                  href="#"
+                  class="text-indigo-600 hover:text-indigo-800 text-sm font-medium"
+                  >View Full Calendar &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BPI: Captured Moments -->
+
+        <section class="p-8 max-w-7xl mx-auto bg-gray-50 rounded-3xl">
+          <div class="max-w-7xl mx-auto mb-6">
+            <div
+              class="flex justify-between items-baseline border-b-2 border-indigo-200 pb-2"
+            >
+              <h3 class="text-4xl font-extrabold text-blue-900">
+                BPI: Captured Moments
+              </h3>
+
+              <button
+                class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded-full transition duration-150 mobile-hidden"
+              >
+                Take a full look at our gallery
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-6 gap-4 auto-rows-[10rem] max-w-7xl mx-auto max-sm:grid-cols-1 max-sm:auto-rows-auto"
+          >
+            <div
+              class="col-span-3 row-span-2 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_1.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-2 row-span-2 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_2.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-3 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_3.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-2 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_4.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-2 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_5.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_6.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_7.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_8.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_9.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_10.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_11.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+
+            <div
+              class="col-span-1 row-span-1 rounded-xl shadow-lg overflow-hidden"
+            >
+              <img
+                src="/static/gallery_asset/img_12.png"
+                alt="Event Photo"
+                class="w-full h-full object-cover transition duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- ----------------------------------------------------------------------------------------------- -->
+        <!-- -------------------------------------------FORM SECTION---------------------- -->
+        <div class="max-w-6xl mx-auto mx-10 mt-20" id="formcall">
+          <div
+            class="bg-white backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-white/90"
+          >
+            <div class="p-8 md:p-10">
+              <!-- Header -->
+              <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+                  Student Participation Form
+                </h1>
+                <p class="text-gray-600">
+                  Fill out the form below to register for events
+                </p>
+              </div>
+
+              <!-- Start form element -->
+              <form class="space-y-8" id="studentForm">
+                <!-- Personal Information Section -->
+                <div class="bg-gray-50 p-6 rounded-xl">
+                  <h2
+                    class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b"
+                  >
+                    Personal Information
+                  </h2>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  >
+                    <!-- Name input field -->
+                    <div>
+                      <label
+                        for="name"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Full Name <span class="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white"
+                      />
+                    </div>
+
+                    <!-- Roll input field -->
+                    <div>
+                      <label
+                        for="roll"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Roll Number <span class="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        name="roll"
+                        id="roll"
+                        placeholder="Enter roll number"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white"
+                      />
+                    </div>
+
+                    <!-- Phone number input field -->
+                    <div>
+                      <label
+                        for="phone"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Contact Number <span class="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        name="phone"
+                        id="phone"
+                        placeholder="Enter contact number"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Academic Information Section -->
+                <div class="bg-gray-50 p-6 rounded-xl">
+                  <h2
+                    class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b"
+                  >
+                    Academic Information
+                  </h2>
+
+                  <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+                  >
+                    <!-- Gender selection input -->
+                    <div>
+                      <label
+                        for="gender"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Gender <span class="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="gender"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white appearance-none cursor-pointer"
+                      >
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+
+                    <!-- Department selection input -->
+                    <div>
+                      <label
+                        for="department"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Department <span class="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="department"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white appearance-none cursor-pointer"
+                      >
+                        <option value="">Select Department</option>
+                        <option value="CT">Civil Technology</option>
+                        <option value="ET">Electrical Technology</option>
+                        <option value="ENT">Electronics Technology</option>
+                        <option value="MT">Mechanical Technology</option>
+                        <option value="CST">
+                          Computer Science & Technology
+                        </option>
+                        <option value="PT">Power Technology</option>
+                        <option value="RAC">
+                          Refrigeration & Air Condition Technology
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- Semester selection input -->
+                    <div>
+                      <label
+                        for="semester"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Semester <span class="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="semester"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white appearance-none cursor-pointer"
+                      >
+                        <option value="">Select Semester</option>
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                        <option value="5th">5th</option>
+                        <option value="6th">6th</option>
+                        <option value="7th">7th</option>
+                        <option value="8th">8th</option>
+                      </select>
+                    </div>
+
+                    <!-- Shift selection input -->
+                    <div>
+                      <label
+                        for="shift"
+                        class="block text-sm font-medium text-gray-700 mb-2"
+                      >
+                        Shift <span class="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="shift"
+                        required
+                        class="w-full px-4 py-3.5 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white appearance-none cursor-pointer"
+                      >
+                        <option value="">Select Shift</option>
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event Registration Section -->
+                <div class="bg-gray-50 p-6 rounded-xl">
+                  <h2
+                    class="text-xl font-semibold text-gray-800 mb-6 pb-2 border-b"
+                  >
+                    Event Registration
+                  </h2>
+
+                  <div class="space-y-6">
+                    <!-- Onusod selection input -->
+                    <div>
+                      <label
+                        for="onusod"
+                        class="block text-lg font-semibold text-gray-700 mb-3"
+                      >
+                        Faculty (অনুষদ) <span class="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="onusod"
+                        required
+                        class="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition duration-200 bg-white appearance-none cursor-pointer"
+                      >
+                        <option value="">Select faculty</option>
+                        <option value="indoor_games_boys">
+                          আন্ত: কক্ষ ক্রীড়া অনুষদ (Indoor Games - Boys)
+                        </option>
+                        <option value="indoor_games_girls">
+                          ছাত্রী অনুষদ (Girls Faculty)
+                        </option>
+                        <option value="literature_culture_council">
+                          সাহিত্য ও সংস্কৃতি অনুষদ (Literature & Culture
+                          Council)
+                        </option>
+                      </select>
+                    </div>
+
+                    <!-- Event selection input -->
+                    <div>
+                      <div class="mb-4">
+                        <label
+                          class="block text-lg font-semibold text-gray-700"
+                        >
+                          Select Events
+                          <span class="text-sm font-normal text-gray-600"
+                            >(Maximum 3 events)</span
+                          >
+                        </label>
+                      </div>
+
+                      <div class="relative inline-block w-full">
+                        <button
+                          type="button"
+                          id="dropdownButton"
+                          class="w-full px-4 py-4 text-lg border-2 border-gray-300 rounded-xl text-left bg-white hover:bg-gray-50 transition duration-200 flex justify-between items-center shadow-sm"
+                          onclick="toggleDropdown()"
+                        >
+                          <span class="text-gray-700" id="selectedItems"
+                            >Select Sports (0 selected)</span
+                          >
+                          <svg
+                            id="dropdownArrow"
+                            class="w-5 h-5 text-gray-600 transition-transform duration-300"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            ></path>
+                          </svg>
+                        </button>
+                        <!-- dropdown -->
+                        <div
+                          id="dropdownContent"
+                          class="hidden z-10 w-full mt-2 bg-white border-2 border-gray-300 rounded-xl shadow-2xl overflow-hidden"
+                        >
+                          <div class="p-4 space-y-3 max-h-80 overflow-y-auto">
+                            <label
+                              class="flex items-center space-x-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer transition duration-200"
+                            >
+                              <input
+                                type="checkbox"
+                                name="sports"
+                                value="Chess"
+                                class="w-5 h-5 text-blue-600 rounded"
+                              />
+                              <span class="text-lg text-gray-800">Chess</span>
+                            </label>
+                            <label
+                              class="flex items-center space-x-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer transition duration-200"
+                            >
+                              <input
+                                type="checkbox"
+                                name="sports"
+                                value="Carrom"
+                                class="w-5 h-5 text-blue-600 rounded"
+                              />
+                              <span class="text-lg text-gray-800">Carrom</span>
+                            </label>
+                            <label
+                              class="flex items-center space-x-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer transition duration-200"
+                            >
+                              <input
+                                type="checkbox"
+                                name="sports"
+                                value="Spectrum"
+                                class="w-5 h-5 text-blue-600 rounded"
+                              />
+                              <span class="text-lg text-gray-800"
+                                >Spectrum</span
+                              >
+                            </label>
+                            <label
+                              class="flex items-center space-x-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer transition duration-200"
+                            >
+                              <input
+                                type="checkbox"
+                                name="sports"
+                                value="Table Tennis"
+                                class="w-5 h-5 text-blue-600 rounded"
+                              />
+                              <span class="text-lg text-gray-800"
+                                >Table Tennis</span
+                              >
+                            </label>
+                            <label
+                              class="flex items-center space-x-3 p-3 hover:bg-blue-50 rounded-lg cursor-pointer transition duration-200"
+                            >
+                              <input
+                                type="checkbox"
+                                name="sports"
+                                value="Rubik's Cube"
+                                class="w-5 h-5 text-blue-600 rounded"
+                              />
+                              <span class="text-lg text-gray-800"
+                                >Rubik's Cube</span
+                              >
+                            </label>
+                          </div>
+                          <div class="bg-gray-50 p-3 border-t">
+                            <div class="flex justify-between items-center">
+                              <span class="text-gray-600" id="selectionCount"
+                                >0/3 selected</span
+                              >
+                              <button
+                                type="button"
+                                onclick="clearSelections()"
+                                class="text-red-600 hover:text-red-800 font-medium"
+                              >
+                                Clear All
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Selected items display -->
+                      <div
+                        id="selectedDisplay"
+                        class="mt-4 p-4 bg-blue-50 rounded-xl border border-blue-200 hidden"
+                      >
+                        <h4 class="font-medium text-gray-700 mb-2">
+                          Selected Events:
+                        </h4>
+                        <div
+                          id="selectedItemsList"
+                          class="flex flex-wrap gap-2"
+                        >
+                          <!-- Selected items will appear here -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="pt-4">
+                  <button
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-6 rounded-xl transition duration-200 focus:ring-4 focus:ring-blue-500/20 text-lg shadow-lg hover:shadow-xl mb-8"
+                  >
+                    Submit Registration
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================================================= -->
+        <!----------------------------------------------- Footer ----------------------------------------------->
+        <!-- ================================================================================================= -->
+        <footer
+          class="relative overflow-hidden bg-blue-950 text-white pt-20 rounded-3xl footer-section"
+        >
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+              class="flex flex-col lg:flex-row justify-between relative pb-10"
+            >
+              <div
+                class="flex items-center space-x-4 max-w-lg mb-8 lg:mb-0 relative z-10"
+              >
+                <img
+                  src="/static/site_asset/logo2.png"
+                  alt="ECA logo"
+                  class="w-16 h-16 object-contain"
+                />
+
+                <div>
+                  <h2 class="text-2xl font-bold uppercase">
+                    Extra Curricular Activities
+                  </h2>
+                  <!-- <p class="text-base text-gray-300">
+                The Hub for BPI Students. Find your passion, improve skills
+                here.
+              </p> -->
+                </div>
+              </div>
+
+              <div
+                class="absolute -mt-18 inset-y-0 -right-10 w-1/2 lg:w-1/3 opacity-30"
+              >
+                <!-- <img
+              src="/static/site_asset/footer_below.png"
+              alt="Background pattern"
+              class="w-full h-full object-cover"
+            /> -->
+              </div>
+            </div>
+
+            <hr class="border-gray-700 mb-8" />
+
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 max-sm:grid-cols-1 gap-8 pb-12"
+            >
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Quick Access
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >About ECA</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >All Clubs & Societies</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Upcoming Events</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Community & Photo Gallery</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Engagement
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Join a Club</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Student Resources</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Legal & Contact
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Contact Us</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Institute Main Website</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Privacy Policy</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Terms & Conditions</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Quick Social Links
+                </h6>
+
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.35c0 .732.593 1.325 1.325 1.325h11.49l.001-8.397h-2.812v-3.26h2.812v-2.352c0-2.793 1.693-4.324 4.176-4.324 1.192 0 2.385.225 2.385.225l-.417 3.031h-1.503c-1.472 0-1.93.92-1.93 1.874v2.48h3.333l-.533 3.26h-2.799v8.397h6.142c.732 0 1.325-.593 1.325-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.001 0c-6.627 0-12 5.373-12 12s5.373 12 12 12c6.626 0 12-5.373 12-12s-5.374-12-12-12zm-2.825 15.748c-.684-1.298.54-3.238.54-3.238.452-.942.235-.918-.198-1.55-.386-.58-1.284-.306-1.742-.718-1.464-1.314-.725-3.69 1.76-4.507 2.115-.694 5.323-.198 6.07.24.475.275.52.48.56.883-.004.053-.01.106-.017.16-.014.238-.344 1.144-.43 1.488-.04.148-.2.25-.35.25-.138 0-.256-.053-.29-.19-1.077-4.1-6.19-2.9-5.186 2.06.182.89.394 1.764.717 2.628.14.37.123.774.202 1.166.082.41.13.824.16 1.238.1 1.37.086 2.748.064 4.128-.27 1.543-1.433 2.76-3.284 2.822-1.897.065-3.32-.486-3.46-2.527-.09-1.226-.145-2.458-.157-3.693 0-.094-.002-.187-.002-.28.16-.904.532-1.82.904-2.735z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 0C6.475 0 2 4.475 2 10.5c0 4.195 2.706 7.747 6.46 9.071-.341.696-.697 1.436-.974 2.179-.28.749-.395 1.516-.386 2.296h.001c.004.83.676 1.5.836 1.5 1.344 0 2.688-.75 3.738-1.956 1.05-.78 2.05-.78 3.102 0 1.05.78 2.05 1.956 3.102 1.956.16 0 .832-.67 1.04-.836.01-.84.09-1.68.32-2.52.23-.84.61-1.63 1.09-2.38 3.754-1.324 6.46-4.876 6.46-9.071C22 4.475 17.525 0 12 0zm-2.7 15.6c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2zm5.4 0c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2zM12 4.4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-3 7.5h6v1.5h-6v-1.5z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.581 7.332c-.224-.816-.883-1.475-1.7-1.7-2.373-.63-11.896-.63-14.269 0-.817.225-1.476.884-1.7 1.7-.63 2.373-.63 7.896 0 10.269.224.816.883 1.475 1.7 1.7 2.373.63 11.896.63 14.269 0 .817-.225 1.476-.884 1.7-1.7.63-2.373.63-7.896 0-10.269zm-13.881 6.368v-4.4l3.864 2.2-3.864 2.2z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18.901 1.153h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-between items-center py-4 border-t border-gray-700 text-gray-400 text-sm"
+            >
+              <h5 class="text-white text-sm">© All Rights Reserved</h5>
+              <h5 class="text-right">Designed & Developed By: CST 22-23</h5>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </root>
+  </body>
+</html>

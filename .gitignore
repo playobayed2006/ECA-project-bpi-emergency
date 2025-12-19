@@ -1,0 +1,4 @@
+*.db
+mise.toml
+package-lock.json
+node_modules
