@@ -11,7 +11,6 @@ app.get("/ping", ping);
 app.post("/", createStudent);
 app.get("/:faculty", getStudents);
 
-
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });

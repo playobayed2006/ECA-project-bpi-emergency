@@ -16,7 +16,6 @@ db.exec(`
     faculty TEXT,
     sports TEXT
   );
-  
 `);
 
 console.log("Database and table created.");
