@@ -43,6 +43,7 @@ export const createStudent = (req, res) => {
       faculty,
       sports,
     );
+    
 
     res.status(200).json({
       id: result.lastInsertRowid,
