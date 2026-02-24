@@ -1,0 +1,537 @@
+<!doctype html>
+<!-- lol -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ECA BPI - Extra Curricular Activities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/form.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style-to-add.css" />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      .gradient-bg {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3730a3 50%,
+          #5b21b6 100%
+        );
+      }
+
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+
+      @keyframes floating {
+        0% {
+          transform: translate(0, 0px);
+        }
+        50% {
+          transform: translate(0, -15px);
+        }
+        100% {
+          transform: translate(0, 0px);
+        }
+      }
+
+      .pulse-glow {
+        animation: pulse-glow 2s infinite;
+      }
+
+      @keyframes pulse-glow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(99, 102, 241, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <div id="popup-spinner" class="spinner"></div>
+        <p id="popup-message">Please Wait...</p>
+        <button id="popup-close" class="hidden">Close</button>
+      </div>
+    </div>
+
+    <root class="min-h-screen flex flex-col mx-5">
+      <div class="bg-sky-100 w-full">
+        <!-- text slider -->
+        <marquee
+          behavior="scroll"
+          direction="left"
+          scrollamount="10"
+          class="bg-sky-300 w-full my-0 py-1"
+        >
+          <p>
+            <span style="color: red">*</span>Apply now to participate in annual
+            sports!
+          </p>
+        </marquee>
+
+        <!-- Header Section -->
+        <header class="bg-white shadow-md sticky top-0 z-50">
+          <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="flex justify-between items-center py-2">
+              <!-- Logo and Brand Section -->
+              <div class="flex items-center space-x-3">
+                <!-- Logo Placeholder -->
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-800 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                >
+                  ECA
+                </div>
+                <div class="hidden sm:block">
+                  <h1
+                    class="text-base sm:text-lg lg:text-xl font-bold text-blue-800"
+                  >
+                    ECA
+                  </h1>
+                </div>
+              </div>
+
+              <!-- Desktop Navigation -->
+              <nav class="hidden md:flex space-x-1 lg:space-x-3">
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-lime-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:-translate-y-0.5 border border-transparent hover:border-lime-500/30 relative overflow-hidden group text-lg"
+                >
+                  <span class="relative z-10">Home</span>
+                  <div
+                    class="absolute inset-0 bg-gradient-to-r from-lime-500/0 via-lime-500/10 to-lime-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+                  ></div>
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-blue-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-300 ease-out transform hover:scale-105 border border-transparent hover:border-blue-500/30 text-lg"
+                >
+                  About
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-purple-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-500 ease-in-out transform hover:scale-110 hover:rotate-1 border border-transparent hover:border-purple-500/30 text-lg"
+                >
+                  Contact
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 font-[500] hover:bg-rose-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-200 ease-in transform hover:skew-x-2 border border-transparent hover:border-rose-500/30 text-lg"
+                >
+                  Events
+                </a>
+                <a
+                  href="#formcall"
+                  class="text-blue-800 font-[500] hover:bg-purple-600/20 py-1 px-2 lg:px-3 rounded-lg transition-all duration-500 ease-in-out transform hover:scale-110 hover:rotate-1 border border-transparent hover:border-purple-500/30 text-lg"
+                >
+                  Apply now
+                </a>
+              </nav>
+
+              <!-- Mobile Menu Button -->
+              <button
+                id="mobile-menu-button"
+                class="md:hidden text-blue-800 hover:bg-blue-100 p-1 rounded-lg transition-colors duration-200"
+              >
+                <i class="fas fa-bars text-lg"></i>
+              </button>
+            </div>
+
+            <!-- Mobile Navigation Menu - Right Aligned and Compact -->
+            <div
+              id="mobile-menu"
+              class="hidden md:hidden absolute right-4 top-16 bg-white rounded-lg shadow-xl border border-gray-200 w-48 py-2"
+            >
+              <div class="flex flex-col space-y-1">
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-lime-600/20 py-2 px-3 rounded mx-2 transition-all duration-300 ease-in-out transform hover:scale-105 border border-transparent hover:border-lime-500/30 text-sm"
+                >
+                  <i class="fas fa-home mr-2 w-4"></i>Home
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-blue-600/20 py-2 px-3 rounded mx-2 transition-all duration-300 ease-out transform hover:scale-105 border border-transparent hover:border-blue-500/30 text-sm"
+                >
+                  <i class="fas fa-info-circle mr-2 w-4"></i>About
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-purple-600/20 py-2 px-3 rounded mx-2 transition-all duration-500 ease-in-out transform hover:scale-110 border border-transparent hover:border-purple-500/30 text-sm"
+                >
+                  <i class="fas fa-envelope mr-2 w-4"></i>Contact
+                </a>
+                <a
+                  href="#"
+                  class="text-blue-800 hover:bg-rose-600/20 py-2 px-3 rounded mx-2 transition-all duration-200 ease-in transform hover:skew-x-2 border border-transparent hover:border-rose-500/30 text-sm"
+                >
+                  <i class="fas fa-calendar-alt mr-2 w-4"></i>Events
+                </a>
+                <a
+                  href="#formcall"
+                  class="text-blue-800 hover:bg-purple-600/20 py-2 px-3 rounded mx-2 transition-all duration-500 ease-in-out transform hover:scale-110 border border-transparent hover:border-purple-500/30 text-sm"
+                >
+                  <i class="fa-solid fa-arrow-right-to-bracket mr-2 w-4"></i
+                  >Apply now
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="flex justify-center mt-20">
+
+          <h3 class="text-2xl">XxX Sorry Working on the page XxX</h3>
+
+        </main>
+
+
+        <!-- ================================================================================================= -->
+        <!----------------------------------------------- Footer ----------------------------------------------->
+        <!-- ================================================================================================= -->
+        <footer
+          class="relative overflow-hidden bg-blue-950 text-white pt-20 rounded-3xl footer-section"
+        >
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+              class="flex flex-col lg:flex-row justify-between relative pb-10"
+            >
+              <div
+                class="flex items-center space-x-4 max-w-lg mb-8 lg:mb-0 relative z-10"
+              >
+                <img
+                  src="./static/site_asset/logo.png"
+                  alt="ECA logo"
+                  class="w-16 h-16 object-contain"
+                />
+
+                <div>
+                  <h2 class="text-2xl font-bold uppercase">
+                    Extra Curricular Activities
+                  </h2>
+                  <!-- <p class="text-base text-gray-300">
+                The Hub for BPI Students. Find your passion, improve skills
+                here.
+              </p> -->
+                </div>
+              </div>
+
+              <div
+                class="absolute -mt-18 inset-y-0 -right-10 w-1/2 lg:w-1/3 opacity-30"
+              >
+                <!-- <img
+              src="/static/site_asset/footer_below.png"
+              alt="Background pattern"
+              class="w-full h-full object-cover"
+            /> -->
+              </div>
+            </div>
+
+            <hr class="border-gray-700 mb-8" />
+
+            <div
+              class="grid grid-cols-2 md:grid-cols-4 max-sm:grid-cols-1 gap-8 pb-12"
+            >
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Quick Access
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >About ECA</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >All Clubs & Societies</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Upcoming Events</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Community & Photo Gallery</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Engagement
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Join a Club</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Student Resources</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Legal & Contact
+                </h6>
+                <nav class="space-y-2">
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Contact Us</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Institute Main Website</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Privacy Policy</a
+                  >
+                  <a
+                    href="#"
+                    class="text-sm text-gray-300 hover:text-indigo-400 block"
+                    >Terms & Conditions</a
+                  >
+                </nav>
+              </div>
+
+              <div>
+                <h6 class="text-lg font-semibold mb-3 text-indigo-400">
+                  Quick Social Links
+                </h6>
+
+                <div class="flex space-x-4">
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.35c0 .732.593 1.325 1.325 1.325h11.49l.001-8.397h-2.812v-3.26h2.812v-2.352c0-2.793 1.693-4.324 4.176-4.324 1.192 0 2.385.225 2.385.225l-.417 3.031h-1.503c-1.472 0-1.93.92-1.93 1.874v2.48h3.333l-.533 3.26h-2.799v8.397h6.142c.732 0 1.325-.593 1.325-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12.001 0c-6.627 0-12 5.373-12 12s5.373 12 12 12c6.626 0 12-5.373 12-12s-5.374-12-12-12zm-2.825 15.748c-.684-1.298.54-3.238.54-3.238.452-.942.235-.918-.198-1.55-.386-.58-1.284-.306-1.742-.718-1.464-1.314-.725-3.69 1.76-4.507 2.115-.694 5.323-.198 6.07.24.475.275.52.48.56.883-.004.053-.01.106-.017.16-.014.238-.344 1.144-.43 1.488-.04.148-.2.25-.35.25-.138 0-.256-.053-.29-.19-1.077-4.1-6.19-2.9-5.186 2.06.182.89.394 1.764.717 2.628.14.37.123.774.202 1.166.082.41.13.824.16 1.238.1 1.37.086 2.748.064 4.128-.27 1.543-1.433 2.76-3.284 2.822-1.897.065-3.32-.486-3.46-2.527-.09-1.226-.145-2.458-.157-3.693 0-.094-.002-.187-.002-.28.16-.904.532-1.82.904-2.735z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M12 0C6.475 0 2 4.475 2 10.5c0 4.195 2.706 7.747 6.46 9.071-.341.696-.697 1.436-.974 2.179-.28.749-.395 1.516-.386 2.296h.001c.004.83.676 1.5.836 1.5 1.344 0 2.688-.75 3.738-1.956 1.05-.78 2.05-.78 3.102 0 1.05.78 2.05 1.956 3.102 1.956.16 0 .832-.67 1.04-.836.01-.84.09-1.68.32-2.52.23-.84.61-1.63 1.09-2.38 3.754-1.324 6.46-4.876 6.46-9.071C22 4.475 17.525 0 12 0zm-2.7 15.6c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2zm5.4 0c-.66 0-1.2-.54-1.2-1.2s.54-1.2 1.2-1.2 1.2.54 1.2 1.2-.54 1.2-1.2 1.2zM12 4.4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-3 7.5h6v1.5h-6v-1.5z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M21.581 7.332c-.224-.816-.883-1.475-1.7-1.7-2.373-.63-11.896-.63-14.269 0-.817.225-1.476.884-1.7 1.7-.63 2.373-.63 7.896 0 10.269.224.816.883 1.475 1.7 1.7 2.373.63 11.896.63 14.269 0 .817-.225 1.476-.884 1.7-1.7.63-2.373.63-7.896 0-10.269zm-13.881 6.368v-4.4l3.864 2.2-3.864 2.2z"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="#"
+                    class="text-white hover:text-indigo-400 transition-colors duration-200"
+                  >
+                    <svg
+                      class="w-8 h-8 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M18.901 1.153h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zm-4.735 0h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM1.153 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 19.785h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 15.05h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 10.315h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM5.888 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM10.623 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM15.358 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445zM20.093 5.58h3.58c.245 0 .445.2.445.445v3.58c0 .245-.2.445-.445.445h-3.58c-.245 0-.445-.2-.445-.445v-3.58c0-.245.2-.445.445-.445z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-between items-center py-4 border-t border-gray-700 text-gray-400 text-sm"
+            >
+              <h5 class="text-white text-sm">© All Rights Reserved</h5>
+              <h5 class="text-right">Designed & Developed By: CST 22-23</h5>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </root>
+  </body>
+
+  <!-- JavaScript for Mobile Menu Toggle -->
+  <script>
+    document
+      .getElementById("mobile-menu-button")
+      .addEventListener("click", function () {
+        const mobileMenu = document.getElementById("mobile-menu");
+        mobileMenu.classList.toggle("hidden");
+
+        // Change icon based on menu state
+        const icon = this.querySelector("i");
+        if (mobileMenu.classList.contains("hidden")) {
+          icon.classList.remove("fa-times");
+          icon.classList.add("fa-bars");
+        } else {
+          icon.classList.remove("fa-bars");
+          icon.classList.add("fa-times");
+        }
+      });
+    // Dropdown functionality
+    function toggleDropdown() {
+      const dropdown = document.getElementById("dropdownContent");
+      const arrow = document.getElementById("dropdownArrow");
+      dropdown.classList.toggle("hidden");
+      arrow.classList.toggle("rotate-180");
+
+      if (!dropdown.classList.contains("hidden")) {
+        document.addEventListener("click", function closeDropdown(e) {
+          if (
+            !e.target.closest("#dropdownContent") &&
+            !e.target.closest("#dropdownButton")
+          ) {
+            dropdown.classList.add("hidden");
+            arrow.classList.remove("rotate-180");
+            document.removeEventListener("click", closeDropdown);
+          }
+        });
+      }
+    }
+
+    // Update selection count and display
+    function updateSelection() {
+      const checkboxes = document.querySelectorAll(
+        'input[name="sports"]:checked',
+      );
+      const count = checkboxes.length;
+      const selectedItems = document.getElementById("selectedItems");
+      const selectionCount = document.getElementById("selectionCount");
+      const selectedDisplay = document.getElementById("selectedDisplay");
+      const selectedItemsList = document.getElementById("selectedItemsList");
+
+      // Update counts
+      selectedItems.textContent = `Select Sports (${count} selected)`;
+      selectionCount.textContent = `${count}/3 selected`;
+
+      // Update selected items display
+      if (count > 0) {
+        selectedDisplay.classList.remove("hidden");
+        selectedItemsList.innerHTML = "";
+        checkboxes.forEach((checkbox) => {
+          const item = document.createElement("div");
+          item.className =
+            "bg-blue-100 text-blue-800 px-3 py-1.5 rounded-lg flex items-center gap-2";
+          item.innerHTML = `
+                        <span>${checkbox.value}</span>
+                        <button type="button" onclick="deselectItem('${checkbox.value}')" class="text-red-500 hover:text-red-700">
+                            ×
+                        </button>
+                    `;
+          selectedItemsList.appendChild(item);
+        });
+      } else {
+        selectedDisplay.classList.add("hidden");
+      }
+    }
+
+    // Deselect individual item
+    function deselectItem(value) {
+      const checkbox = document.querySelector(
+        `input[name="sports"][value="${value}"]`,
+      );
+      if (checkbox) {
+        checkbox.checked = false;
+        updateSelection();
+      }
+    }
+
+    // Clear all selections
+    function clearSelections() {
+      document.querySelectorAll('input[name="sports"]').forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+      updateSelection();
+    }
+
+    // Limit to max 3 selections
+    document.querySelectorAll('input[name="sports"]').forEach((checkbox) => {
+      checkbox.addEventListener("change", function (e) {
+        const checkedBoxes = document.querySelectorAll(
+          'input[name="sports"]:checked',
+        );
+        if (checkedBoxes.length > 3) {
+          this.checked = false;
+          alert("⚠️ Maximum 3 sports can be selected");
+        }
+        updateSelection();
+      });
+    });
+
+    // Initialize selection display
+    updateSelection();
+  </script>
+</html>
