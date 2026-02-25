@@ -1,59 +1,164 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Dashboard</title>
-    <script src="./js/admin.js" defer></script>
+    <title>Admin Dashboard | Data Export</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/style-to-add.css">
     <style>
-      body{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: linear-gradient(to top right, #083869 -5%, #4b0461 100%);
-      }
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --accent-color: #38bdf8;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-gradient);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+
+        .dashboard-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-label {
+            display: block;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .custom-select {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            width: 100%;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .custom-select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+        }
+
+        #downloadBtn {
+            background: var(--accent-color);
+            color: #0f172a;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        #downloadBtn:hover {
+            transform: translateY(-2px);
+            background: #7dd3fc;
+        }
+
+        #downloadBtn:active {
+            transform: translateY(0);
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup.hidden { display: none; }
+
+        .spinner-border {
+            color: var(--accent-color);
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
 
     <div id="popup" class="popup hidden">
-      <div class="popup-content">
-        <div id="popup-spinner" class="spinner"></div>
-        <p id="popup-message">Please Wait...</p>
-        <button id="popup-close" class="hidden">Close</button>
-      </div>
-    </div>
-
-    <div class="main">
-      <div class="content">
-        <h1>Admin Dashboard</h1>
-        <p>To get participants information download the CSV file from below.</p>
-
-        <div class="option">
-          <!-- Admin panel entry point. -->
-          <!-- From here an admin can download specific onusod's data as csv file. -->
-          <!-- TODO: implement security check, password or other form of authentication. -->
-          <label class="label-title">Select to download:</label>
-          <select id="adminOnusod" required>
-            <option value="indoor_games_boys">আন্ত: কক্ষ ক্রীড়া অনুষদ</option>
-            <option value="indoor_games_girls">ছাত্রী অনুষদ</option>
-            <option value="literature_culture_council">সাহিত্য ও সংস্কৃতি অনুষদ</option>
-          </select>
-
-          <!-- Download button for the csv file. -->
-          <!-- This has an attached event listener on ./js/admin.js -->
-          <button type="button" id="downloadBtn">Download CSV</button>
-          <br />
-          <br />
+        <div class="dashboard-card" style="max-width: 300px; padding: 2rem;">
+            <div id="popup-spinner" class="spinner-border mb-3" role="status"></div>
+            <p id="popup-message" class="mb-3">Processing...</p>
+            <button id="popup-close" class="btn btn-outline-light btn-sm hidden">Close</button>
         </div>
-      </div>
     </div>
-  </body>
+
+    <main class="container d-flex justify-content-center">
+        <div class="dashboard-card">
+            <div class="mb-4">
+                <i class="bi bi-database-fill-down" style="font-size: 3rem; color: var(--accent-color);"></i>
+            </div>
+            <h1>Admin Dashboard</h1>
+            <p class="subtitle">Export participant data to CSV format</p>
+
+            <div class="option">
+                <label class="form-label" for="adminOnusod">Select Faculty (অনুষদ)</label>
+                <select id="adminOnusod" class="custom-select" required>
+                    <option value="indoor_games_boys">আন্ত: কক্ষ ক্রীড়া অনুষদ</option>
+                    <option value="indoor_games_girls">ছাত্রী অনুষদ</option>
+                    <option value="literature_culture_council">সাহিত্য ও সংস্কৃতি অনুষদ</option>
+                </select>
+
+                <button type="button" id="downloadBtn">
+                    <i class="bi bi-cloud-arrow-down"></i>
+                    Download CSV
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="./js/admin.js" defer></script>
+</body>
 </html>
