@@ -1,7 +1,7 @@
 // --- SMART URL LOGIC ---
 const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
   ? "http://localhost:3000" 
-  : "https://your-backend-name.onrender.com"; // <--- REPLACE THIS WITH YOUR RENDER URL
+  : "https://eca-project-bpi-emergency.onrender.com/"; // <--- REPLACE THIS WITH YOUR RENDER URL
 // -----------------------
 
 function showPopup(message, loading = false) {
