@@ -1,3 +1,9 @@
+// --- SMART URL LOGIC ---
+const BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+  ? "http://localhost:3000" 
+  : "https://your-backend-name.onrender.com"; // <--- REPLACE THIS WITH YOUR RENDER URL
+// -----------------------
+
 function showPopup(message, loading = false) {
   const popup = document.getElementById("popup");
   const popupMessage = document.getElementById("popup-message");
@@ -54,7 +60,9 @@ document.getElementById("studentForm").addEventListener("submit", async (e) => {
 
   try {
     showPopup("Please Wait...", true);
-    const response = await fetch("http://localhost:3000/", {
+    
+    // UPDATED: Now uses BASE_URL instead of hardcoded localhost
+    const response = await fetch(`${BASE_URL}/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -82,6 +90,7 @@ document.getElementById("studentForm").addEventListener("submit", async (e) => {
     }
   } catch (err) {
     console.error(err);
-    alert("Network error. Please try again.");
+    // Suggestion: use showPopup for errors too so it looks consistent!
+    showPopup("Network error. Your backend might be waking up. Please try again in 30 seconds.");
   }
 });
